@@ -34,7 +34,7 @@
 # build folders
 *cmake-build-*
 
-output.txt
+build
 
 # IDE folders
 .idea
