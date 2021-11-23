@@ -1,6 +1,10 @@
 # i18n
 
-Internationalization
+Internationalization in Linux with libintl & gettext.
+
+- POT: Portable Object Template
+- PO: Portable Object
+- MO: Machine Object
 
 ## Create template
 
@@ -27,4 +31,36 @@ Create a MO from the PO
 
     msgfmt -c -v -o main.mo main.po 
 
-See [Progmar Marcin Załęczny](https://progmar.net.pl/en/knowledge-base/gettext)
+## Review
+
+Check if the program is loading the .MO correctly
+
+    strace -e trace=openat ./libintl_gettext
+
+Use `msgunfmt` for reverse-compiling .mo files
+
+## The code
+
+```shell
+mkdir build && cd build
+cmake -DCMAKE_MODULE_PATH=$PWD -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build .
+```
+
+CMake-configure creates de POT template in ./build/locale/es/LC_MESSAGES  
+Then, create the .PO file with `msginit`.  
+Fill the translations, including the plural forms.  
+Then, create the .MO file with `msgfmt`.  
+
+Then run 
+
+    ./build/libintl_gettext 
+
+The messages should be shown in Spanish, one of them with the plural form. 
+
+
+---
+See:
+- [Progmar Marcin Załęczny](https://progmar.net.pl/en/knowledge-base/gettext)
+- [tutorialspoint](https://www.tutorialspoint.com/unix_commands/gettext.htm)
+- [transifex](https://docs.transifex.com/formats/gettext)
