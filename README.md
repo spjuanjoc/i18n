@@ -58,6 +58,12 @@ Then run
 
 The messages should be shown in Spanish, one of them with the plural form. 
 
+## Poedit
+
+The application Poedit is used to create and modify PO and MO files from POT
+files. Having a POT you can generate a PO and fill the translations. It is
+particularly useful when having an already translated PO file, and updating the
+POT, then you can update the PO from the POT using Poedit.
 
 ---
 See:
